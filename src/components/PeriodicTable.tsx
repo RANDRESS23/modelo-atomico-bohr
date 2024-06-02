@@ -1,5 +1,9 @@
+import { ElementCard } from './ElementCard'
+
 export const PeriodicTable = () => {
   return (
-    <div>PeriodicTable</div>
+    <div>
+      <ElementCard />
+    </div>
   )
 }
