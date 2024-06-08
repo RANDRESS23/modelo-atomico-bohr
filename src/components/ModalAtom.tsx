@@ -44,7 +44,7 @@ const parseElectronConfiguration = (configuration: string): ElectronConfigResult
 
   orbitals.forEach((orbital) => {
     const principalLevel = parseInt(orbital[0])
-    const electronCount = parseInt(`${isNaN(orbital[orbital.length - 2]) ? '' : orbital[orbital.length - 2]}${orbital[orbital.length - 1]}`)
+    const electronCount = parseInt(`${typeof orbital[orbital.length - 2] !== 'number' ? '' : orbital[orbital.length - 2]}${orbital[orbital.length - 1]}`)
 
     while (numElectrons.length < principalLevel) {
       numElectrons.push(0)
@@ -66,7 +66,7 @@ const parsedElectronConfigurationString = (configuration: string) => {
   const orbitals = configuration.split(' ')
 
   const newElectronConfiguration = orbitals.map((orbital) => {
-    const electronCount = parseInt(`${isNaN(orbital[orbital.length - 2]) ? '' : orbital[orbital.length - 2]}${orbital[orbital.length - 1]}`)
+    const electronCount = parseInt(`${typeof orbital[orbital.length - 2] !== 'number' ? '' : orbital[orbital.length - 2]}${orbital[orbital.length - 1]}`)
 
     return `${orbital[0]}${orbital[1]}${SUBSCRIPTS[electronCount]}`
   })
@@ -81,7 +81,7 @@ export default function ModalAtom ({ atom, isOpen, onClose }: ModalAtomProps) {
         {(onClose) => (
           <div className='bg-black'>
             <ModalHeader className="flex flex-col gap-1">Información acerca del {atom?.name}</ModalHeader>
-            <ModalBody className='relative bg-grid-black dark:bg-grid-white w-full flex justify-between'>
+            <ModalBody className='relative bg-grid-black dark:bg-grid-white w-full flex justify-between pb-7'>
               <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_0.5%,black)]" />
               <div className='w-full flex flex-col justify-center items-center z-10 gap-4 mb-6'>
                 <h2 className='text-3xl font-bold uppercase'>{atom?.name}</h2>
