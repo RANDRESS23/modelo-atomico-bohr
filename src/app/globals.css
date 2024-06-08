@@ -5,3 +5,16 @@
 :root {
   background-color: black;
 }
+
+html::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 4rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
