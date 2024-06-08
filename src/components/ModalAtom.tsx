@@ -44,7 +44,7 @@ const parseElectronConfiguration = (configuration: string): ElectronConfigResult
 
   orbitals.forEach((orbital) => {
     const principalLevel = parseInt(orbital[0])
-    const electronCount = parseInt(orbital.match(/\d+$/)[0])
+    const electronCount = parseInt(`${isNaN(orbital[orbital.length - 2]) ? '' : orbital[orbital.length - 2]}${orbital[orbital.length - 1]}`)
 
     while (numElectrons.length < principalLevel) {
       numElectrons.push(0)
