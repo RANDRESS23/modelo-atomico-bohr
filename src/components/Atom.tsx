@@ -11,12 +11,14 @@ const Electron = ({ radius, angle, speed, electronSize }: { radius: number, angl
       const t = frame.time / 1000
       const x = radius * Math.cos(speed * t + angle)
       const y = radius * Math.sin(speed * t + angle)
-      electronRef.current.position({ x, y })
+      if (electronRef.current) electronRef.current.position({ x, y })
     }, electronRef.current.getLayer())
 
-    anim.current.start()
+    if (anim.current) anim.current.start()
 
-    return () => anim.current.stop()
+    return () => {
+      if (anim.current) anim.current.stop()
+    }
   }, [radius, angle, speed])
 
   return <Circle ref={electronRef} x={radius} y={0} radius={electronSize} fill="#00dfd8" />
@@ -39,18 +41,22 @@ const Orbital = ({ radius, numElectrons, speed, electronSize }: { radius: number
   )
 }
 
-const Atomo2D = () => {
+interface Atomo2DProps {
+  symbol: string
+  orbitalSpeeds: number[]
+  orbitalRadii: number[]
+  numElectrons: number[]
+}
+
+const Atomo2D = ({ symbol, orbitalSpeeds, orbitalRadii, numElectrons }: Atomo2DProps) => {
   const nucleusSize = 20
   const electronSize = 3
-  const orbitalSpeeds = [1, 0.75, 0.5, 0.25, 0.1]
-  const orbitalRadii = [30, 60, 90, 120, 150]
-  const numElectrons = [2, 8, 18, 12, 1]
 
   return (
-    <Stage width={350} height={320}>
+    <Stage width={430} height={430}>
       <Layer>
-        <Group x={350 / 2} y={320 / 2}>
-          <Text text="Nb" fontSize={nucleusSize} fill="white" x={-nucleusSize / 2} y={-nucleusSize / 2} />
+        <Group x={430 / 2} y={430 / 2}>
+          <Text text={symbol} fontSize={nucleusSize} fill="white" x={-nucleusSize / 2} y={-nucleusSize / 2} />
           {orbitalRadii.map((radius, index) => (
             <Orbital
               key={index}

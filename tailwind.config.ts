@@ -1,5 +1,6 @@
 import { nextui } from '@nextui-org/react'
 import type { Config } from 'tailwindcss'
+import svgToDataUri from 'mini-svg-data-uri'
 
 const config: Config = {
   content: [
@@ -13,7 +14,13 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'grid-white': `url("${svgToDataUri(
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#202020"><path d="M0 .5H31.5V32"/></svg>'
+        )}")`,
+        'grid-black': `url("${svgToDataUri(
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#e6e6e6"><path d="M0 .5H31.5V32"/></svg>'
+        )}")`
       },
       colors: {
         'color-gradient-1A': '#007cf0',
