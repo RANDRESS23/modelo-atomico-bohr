@@ -42,7 +42,7 @@ const parseElectronConfiguration = (configuration?: string): ElectronConfigResul
 
   const orbitals = configuration?.split(' ')
 
-  orbitals.forEach((orbital) => {
+  orbitals?.forEach((orbital) => {
     const principalLevel = parseInt(orbital[0])
     const electronCount = parseInt(`${typeof orbital[orbital.length - 2] !== 'number' ? '' : orbital[orbital.length - 2]}${orbital[orbital.length - 1]}`)
 
@@ -62,10 +62,10 @@ const parseElectronConfiguration = (configuration?: string): ElectronConfigResul
   }
 }
 
-const parsedElectronConfigurationString = (configuration: string) => {
-  const orbitals = configuration.split(' ')
+const parsedElectronConfigurationString = (configuration?: string) => {
+  const orbitals = configuration?.split(' ')
 
-  const newElectronConfiguration = orbitals.map((orbital) => {
+  const newElectronConfiguration = orbitals?.map((orbital) => {
     const electronCount = parseInt(`${typeof orbital[orbital.length - 2] !== 'number' ? '' : orbital[orbital.length - 2]}${orbital[orbital.length - 1]}`)
 
     return `${orbital[0]}${orbital[1]}${SUBSCRIPTS[electronCount]}`
