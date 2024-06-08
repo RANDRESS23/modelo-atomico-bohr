@@ -68,7 +68,7 @@ const parsedElectronConfigurationString = (configuration: string) => {
   const newElectronConfiguration = orbitals.map((orbital) => {
     const electronCount = parseInt(`${typeof orbital[orbital.length - 2] !== 'number' ? '' : orbital[orbital.length - 2]}${orbital[orbital.length - 1]}`)
 
-    return `${orbital[0]}${orbital[1]}${SUBSCRIPTS[electronCount]}`
+    return `${orbital[0]}${orbital[1]}${SUBSCRIPTS[electronCount.toString()]}`
   })
 
   return newElectronConfiguration.join(' ')
