@@ -10,7 +10,7 @@ interface TitleAnimatedProps {
 }
 
 export const TitleAnimated = ({ text1, text2, textSize, isTextLeft, isTextCol, isTextRowMobile }: TitleAnimatedProps) => {
-  const textSizeDefault = 'text-3xl lg:text-4xl'
+  const textSizeDefault = 'text-4xl lg:text-5xl'
 
   return (
     <div className={cn(
