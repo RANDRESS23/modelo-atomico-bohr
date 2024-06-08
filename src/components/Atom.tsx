@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { Stage, Layer, Text, Group, Circle } from 'react-konva'
+import Konva from 'konva'
 
 const Electron = ({ radius, angle, speed, electronSize }: { radius: number, angle: number, speed: number, electronSize: number }) => {
-  const electronRef = useRef(null)
-  const anim = useRef(null)
+  const electronRef = useRef<any>(null)
+  const anim = useRef<any>(null)
 
   useEffect(() => {
-    anim.current = new window.Konva.Animation((frame: any) => {
+    anim.current = new Konva.Animation((frame: any) => {
       const t = frame.time / 1000
       const x = radius * Math.cos(speed * t + angle)
       const y = radius * Math.sin(speed * t + angle)
