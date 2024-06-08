@@ -34,13 +34,13 @@ const SUBSCRIPTS: Record<number, string> = {
   14: '¹⁴'
 }
 
-const parseElectronConfiguration = (configuration: string): ElectronConfigResult => {
+const parseElectronConfiguration = (configuration?: string): ElectronConfigResult => {
   const orbitalSpeeds = [1, 0.75, 0.5, 0.25, 0.1, 0.05, 0.03]
   const orbitalRadii = [30, 60, 90, 120, 150, 180, 210]
 
   const numElectrons = [0, 0, 0, 0, 0, 0, 0]
 
-  const orbitals = configuration.split(' ')
+  const orbitals = configuration?.split(' ')
 
   orbitals.forEach((orbital) => {
     const principalLevel = parseInt(orbital[0])
@@ -89,9 +89,9 @@ export default function ModalAtom ({ atom, isOpen, onClose }: ModalAtomProps) {
               </div>
               <Atomo2D
                 symbol={atom?.symbol}
-                orbitalSpeeds={parseElectronConfiguration(atom?.electron_configuration ?? []).orbitalSpeeds}
-                orbitalRadii={parseElectronConfiguration(atom?.electron_configuration ?? []).orbitalRadii}
-                numElectrons={parseElectronConfiguration(atom?.electron_configuration ?? []).numElectrons}
+                orbitalSpeeds={parseElectronConfiguration(atom?.electron_configuration).orbitalSpeeds}
+                orbitalRadii={parseElectronConfiguration(atom?.electron_configuration).orbitalRadii}
+                numElectrons={parseElectronConfiguration(atom?.electron_configuration).numElectrons}
               />
               <div className='z-10 absolute top-60 left-[480px] pr-3'>
                 <h3 className='text-lg font-semibold mb-1'>Propiedades:</h3>

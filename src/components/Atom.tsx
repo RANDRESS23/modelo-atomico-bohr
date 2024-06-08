@@ -43,12 +43,12 @@ const Orbital = ({ radius, numElectrons, speed, electronSize }: { radius: number
 
 interface Atomo2DProps {
   symbol?: string
-  orbitalSpeeds: number[]
-  orbitalRadii: number[]
-  numElectrons: number[]
+  orbitalSpeeds?: number[]
+  orbitalRadii?: number[]
+  numElectrons?: number[]
 }
 
-const Atomo2D = ({ symbol, orbitalSpeeds, orbitalRadii, numElectrons }: Atomo2DProps) => {
+const Atomo2D = ({ symbol, orbitalSpeeds = [], orbitalRadii = [], numElectrons = [] }: Atomo2DProps) => {
   const nucleusSize = 20
   const electronSize = 3
 
