@@ -71,7 +71,7 @@ const parsedElectronConfigurationString = (configuration?: string) => {
     return `${orbital[0]}${orbital[1]}${SUBSCRIPTS[electronCount]}`
   })
 
-  return newElectronConfiguration.join(' ')
+  return newElectronConfiguration.join(' ') || '--'
 }
 
 export default function ModalAtom ({ atom, isOpen, onClose }: ModalAtomProps) {
