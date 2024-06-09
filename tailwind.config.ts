@@ -52,12 +52,23 @@ const config: Config = {
           '60%': { opacity: '1' },
           '83.333%': { opacity: '1' },
           '100%': { opacity: '0' }
+        },
+        shimmer: {
+          from: {
+            backgroundPosition: '0 0',
+            transform: 'translateX(0%)'
+          },
+          to: {
+            backgroundPosition: '-200% 0',
+            transform: 'translateX(0%)'
+          }
         }
       },
       animation: {
         'color-cycle-1': 'animation-title-1 10s ease-in-out infinite',
         'color-cycle-2': 'animation-title-2 10s ease-in-out infinite',
-        'color-cycle-3': 'animation-title-3 10s ease-in-out infinite'
+        'color-cycle-3': 'animation-title-3 10s ease-in-out infinite',
+        shimmer: 'shimmer 3s linear infinite'
       }
     }
   },
